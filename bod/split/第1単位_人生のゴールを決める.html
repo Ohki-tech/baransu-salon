@@ -977,6 +977,9 @@
   .cf-legend .sw-cash {
     background: linear-gradient(90deg, #1f5fbf 0%, #14418a 100%);
   }
+  .cf-legend .sw-cash-asset {
+    background: linear-gradient(90deg, var(--navy) 0%, var(--navy-dark) 100%);
+  }
   .cf-cash-key {
     margin-left: auto;
     color: var(--navy);
@@ -984,7 +987,7 @@
 
   .cf-row {
     display: grid;
-    grid-template-columns: 2.6vw 1fr;
+    grid-template-columns: 2.6vw 1fr auto;
     align-items: center;
     gap: 0.5vw;
     margin-bottom: 0.5vw;
@@ -1026,6 +1029,12 @@
     white-space: nowrap;
     flex-shrink: 0;
     text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+  .cf-asset.cash {
+    background: linear-gradient(90deg, var(--navy) 0%, var(--navy-dark) 100%);
+  }
+  .cf-asset-label.cash {
+    color: var(--navy-dark);
   }
   .cf-cash-seg {
     background: linear-gradient(90deg, #1f5fbf 0%, #14418a 100%);
@@ -2931,54 +2940,6 @@
       </div>
     </div>
 
-    <!-- ===== Slide ④-2 本体 ===== -->
-
-    <div class="slide">
-      <div class="top-bar">
-        <div class="top-bar-left"><div class="top-bar-title">ビジネスモデル ── 2ケース比較</div></div>
-        <div class="top-bar-right">バランス大家大学 ／ BOD</div>
-      </div>
-      <div class="content-body">
-        <div class="content-title-row">
-          <div class="content-title">ケース A vs ケース B</div>
-        </div>
-        <div class="case-grid">
-          <div class="case-card a">
-            <div class="case-tag">▼ ケース A　現金で購入</div>
-            <div class="case-h">自己資金1,000万円で1,000万円の物件</div>
-            <table class="dt">
-              <thead><tr><th>年次</th><th>家賃</th><th>返済</th><th>手残り</th><th>残債</th><th>純資産</th></tr></thead>
-              <tbody>
-                <tr><td>1年目</td><td class="num">100万</td><td class="num">0</td><td class="num">100万</td><td class="num">0</td><td class="num">1,000万</td></tr>
-                <tr><td>5年目</td><td class="num">100万</td><td class="num">0</td><td class="num">100万</td><td class="num">0</td><td class="num">1,000万</td></tr>
-                <tr><td>10年目</td><td class="num">100万</td><td class="num">0</td><td class="num">100万</td><td class="num">0</td><td class="num">1,000万</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="case-card b">
-            <div class="case-tag">▲ ケース B　借入で購入</div>
-            <div class="case-h">自己資金1,000万＋融資9,000万で1億円の物件</div>
-            <table class="dt">
-              <thead><tr><th>年次</th><th>家賃</th><th>返済</th><th>手残り</th><th>残債</th><th>純資産</th></tr></thead>
-              <tbody>
-                <tr><td>1年目</td><td class="num">1,000万</td><td class="num">約900万</td><td class="num">約100万</td><td class="num">9,000万</td><td class="num">1,000万</td></tr>
-                <tr><td>5年目</td><td class="num">1,000万</td><td class="num">約900万</td><td class="num">約100万</td><td class="num">約7,000万</td><td class="num">約3,000万</td></tr>
-                <tr><td>10年目</td><td class="num">1,000万</td><td class="num">約900万</td><td class="num">約100万</td><td class="num">約4,500万</td><td class="num">約5,500万</td></tr>
-                <tr class="hi"><td>完済</td><td class="num">1,000万</td><td class="num">0</td><td class="num"><span class="pos">1,000万</span></td><td class="num">0</td><td class="num"><span class="pos">1億超</span></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="key-msg mini">
-          <span class="label">補　足</span>手残りは同じ100万でも、純資産の推移はケースA・Bで異なる結果となる（一般的なシミュレーション）。
-        </div>
-      </div>
-      <div class="bottom-bar">
-        <div class="brand">BOD ／ バランス大家大学</div>
-        <div><span class="stype">本　体</span></div>
-      </div>
-    </div>
-
     <!-- ============================================================
          CH⑮  残債減ゲーム清書（ホワイトボード起こし）
          ============================================================ -->
@@ -2992,7 +2953,8 @@
       </div>
       <div class="content-body">
         <div class="content-title-row">
-          <div class="content-title">同じ手残り<span class="accent">100万円</span>でも、年々の景色が違う</div>
+          <div class="content-title">同じ表面利回り<span class="accent">10%</span>、手残り<span class="accent">100万円</span>でも、借入によるレバレッジで大きく差がつく</div>
+          <div class="content-sub">ホワイトボード清書版（バランス大家本人による図解）</div>
         </div>
 
         <div class="barcmp">
@@ -3000,61 +2962,62 @@
           <!-- 左: 現金1,000万 -->
           <div class="barcmp-card">
             <div class="bcmp-tag">▼ 現金　1,000万円</div>
-            <div class="bcmp-h">現金1,000万円で1,000万円の物件を購入</div>
-
-            <div class="cf-legend">
-              <span><i class="sw sw-debt"></i>残債</span>
-              <span><i class="sw sw-asset"></i>純資産</span>
-              <span><i class="sw sw-cash"></i>手残り(年)</span>
-            </div>
+            <div class="bcmp-h">現金1,000万で1,000万の物件を購入<br><span style="font-size: 0.92vw; color:var(--text-muted); font-weight:600;">→ 純資産が年間100万円ずつ増え、3年で1,300万円に</span></div>
 
             <div class="cf-row">
               <div class="cf-yr">1年目</div>
-              <div class="cf-bar"><div class="cf-asset" style="width:88%;">1,000</div><div class="cf-cash-seg">100</div></div>
+              <div class="cf-bar"><div class="cf-asset cash" style="width:11%;">1,100</div></div>
+              <div class="cf-tail"><span class="cf-asset-label cash">純1,100万</span></div>
             </div>
             <div class="cf-row">
               <div class="cf-yr">2年目</div>
-              <div class="cf-bar"><div class="cf-asset" style="width:88%;">1,000</div><div class="cf-cash-seg">100</div></div>
+              <div class="cf-bar"><div class="cf-asset cash" style="width:12%;">1,200</div></div>
+              <div class="cf-tail"><span class="cf-asset-label cash">純1,200万</span></div>
             </div>
             <div class="cf-row">
               <div class="cf-yr">3年目</div>
-              <div class="cf-bar"><div class="cf-asset" style="width:88%;">1,000</div><div class="cf-cash-seg">100</div></div>
+              <div class="cf-bar"><div class="cf-asset cash" style="width:13%;">1,300</div></div>
+              <div class="cf-tail"><span class="cf-asset-label cash">純1,300万</span></div>
             </div>
 
-            <div class="cf-summary">残債 0／純資産 1,000万 のまま <strong>変わらず</strong></div>
+            <div class="cf-legend">
+              <span><i class="sw sw-cash-asset"></i>純資産</span>
+              <span style="margin-left:auto; color:var(--navy-dark); font-weight:800;">→ 3年で純資産1,300万</span>
+            </div>
           </div>
 
           <!-- 右: 借入1,000+9,000 -->
           <div class="barcmp-card hot">
             <div class="bcmp-tag">▲ 借入　1,000 ＋ 9,000 ＝ 1億円</div>
-            <div class="bcmp-h">自己資金1,000万＋融資9,000万で1億円の物件</div>
+            <div class="bcmp-h">自己資金1,000万＋融資9,000万で1億円の物件<br><span style="font-size: 0.92vw; color:var(--accent-dark); font-weight:700;">→ 融資10年・毎年900万返済（金利無視）／手残り100万・純資産は年1,000万ずつ増加、3年で3,000万に</span></div>
+
+            <div class="cf-row">
+              <div class="cf-yr">1年目</div>
+              <div class="cf-bar"><div class="cf-debt" style="width:78%;">残債9,000万</div><div class="cf-asset" style="width:10%;">1,000</div></div>
+              <div class="cf-tail"><span class="cf-asset-label">純1,000万</span></div>
+            </div>
+            <div class="cf-row">
+              <div class="cf-yr">2年目</div>
+              <div class="cf-bar"><div class="cf-debt" style="width:68%;">残債8,000万</div><div class="cf-asset" style="width:20%;">2,000万</div></div>
+              <div class="cf-tail"><span class="cf-asset-label">純2,000万</span></div>
+            </div>
+            <div class="cf-row">
+              <div class="cf-yr">3年目</div>
+              <div class="cf-bar"><div class="cf-debt" style="width:58%;">残債7,000万</div><div class="cf-asset" style="width:30%;">3,000万</div></div>
+              <div class="cf-tail"><span class="cf-asset-label">純3,000万</span></div>
+            </div>
 
             <div class="cf-legend">
               <span><i class="sw sw-debt"></i>残債</span>
               <span><i class="sw sw-asset"></i>純資産</span>
-              <span><i class="sw sw-cash"></i>手残り(年)</span>
+              <span style="margin-left:auto; color:var(--accent-dark); font-weight:800;">▲ 3年で純資産3,000万</span>
             </div>
-
-            <div class="cf-row">
-              <div class="cf-yr">1年目</div>
-              <div class="cf-bar"><div class="cf-debt" style="width:78%;">9,000</div><div class="cf-asset" style="width:10%;">1,000</div><div class="cf-cash-seg">100</div></div>
-            </div>
-            <div class="cf-row">
-              <div class="cf-yr">2年目</div>
-              <div class="cf-bar"><div class="cf-debt" style="width:68%;">8,000</div><div class="cf-asset" style="width:20%;">2,000</div><div class="cf-cash-seg">100</div></div>
-            </div>
-            <div class="cf-row">
-              <div class="cf-yr">3年目</div>
-              <div class="cf-bar"><div class="cf-debt" style="width:58%;">7,000</div><div class="cf-asset" style="width:30%;">3,000</div><div class="cf-cash-seg">100</div></div>
-            </div>
-
-            <div class="cf-summary hot">残債 9,000→7,000万・純資産 1,000→3,000万 <strong>毎年1,000万ずつ純資産UP</strong></div>
           </div>
 
         </div>
 
         <div class="key-msg mini">
-          <span class="label">補　足</span>手残り100万円は同じ。レバレッジを使うと <strong style="color:#fff;">入居者が毎年残債を減らしてくれる</strong>＝純資産が増える。
+          <span class="label">結　論</span>手残り100万円は同じでも、レバレッジを使うと <strong style="color:#fff;">入居者が毎年残債を減らしてくれる＝純資産が増える</strong>。<br>3年後に同額で売却した際の、諸費用を無視した税引き前キャピタルゲインで大きく差がつく ── <strong style="color:#fff;">現金：300万円　vs　借入：2,000万円</strong>
         </div>
       </div>
       <div class="bottom-bar">

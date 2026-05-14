@@ -977,6 +977,9 @@
   .cf-legend .sw-cash {
     background: linear-gradient(90deg, #1f5fbf 0%, #14418a 100%);
   }
+  .cf-legend .sw-cash-asset {
+    background: linear-gradient(90deg, var(--navy) 0%, var(--navy-dark) 100%);
+  }
   .cf-cash-key {
     margin-left: auto;
     color: var(--navy);
@@ -984,7 +987,7 @@
 
   .cf-row {
     display: grid;
-    grid-template-columns: 2.6vw 1fr;
+    grid-template-columns: 2.6vw 1fr auto;
     align-items: center;
     gap: 0.5vw;
     margin-bottom: 0.5vw;
@@ -1026,6 +1029,12 @@
     white-space: nowrap;
     flex-shrink: 0;
     text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+  .cf-asset.cash {
+    background: linear-gradient(90deg, var(--navy) 0%, var(--navy-dark) 100%);
+  }
+  .cf-asset-label.cash {
+    color: var(--navy-dark);
   }
   .cf-cash-seg {
     background: linear-gradient(90deg, #1f5fbf 0%, #14418a 100%);
